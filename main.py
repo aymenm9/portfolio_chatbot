@@ -18,11 +18,11 @@ app.add_middleware(
 
 
 @app.get("/")
-def read_root():
+async def read_root():
     return {"Hello": "World"}
 
 
 @app.post("/api/v1/chat_bot")
-def chat_bot(user_input:chat_input, chat_history:chat_history)->chat_output:
+async def chat_bot(user_input:chat_input, chat_history:chat_history)->chat_output:
     chat = generate(user_input.text, chat_history)
     return chat_output(text=chat)
